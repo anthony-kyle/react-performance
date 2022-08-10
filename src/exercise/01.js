@@ -3,7 +3,11 @@
 
 import * as React from 'react'
 
-const Globe = React.lazy(() => import('../globe'));
+const loadGlobe = () => {
+  return import('../globe');
+}
+const Globe = React.lazy(loadGlobe);
+
 
 const Loading = ({children, dots, cycleSpeed}) => {
   const [iteration, setIteration] = React.useState(0)
@@ -36,10 +40,6 @@ const Loading = ({children, dots, cycleSpeed}) => {
 function App() {
   const [showGlobe, setShowGlobe] = React.useState(false)
 
-  // 🐨 wrap the code below in a <React.Suspense /> component
-  // with a fallback.
-  // 💰 try putting it in a few different places and observe how that
-  // impacts the user experience.
   return (
       
       <div
@@ -52,7 +52,7 @@ function App() {
           padding: '2rem',
         }}
       >
-        <label style={{marginBottom: '1rem'}}>
+        <label style={{marginBottom: '1rem'}} onMouseEnter={loadGlobe} onFocus={loadGlobe}>
           <input
             type="checkbox"
             checked={showGlobe}
