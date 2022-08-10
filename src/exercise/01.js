@@ -4,7 +4,7 @@
 import * as React from 'react'
 
 const loadGlobe = () => {
-  return import('../globe');
+  return import(/* webpackPrefetch: true */'../globe');
 }
 const Globe = React.lazy(loadGlobe);
 
