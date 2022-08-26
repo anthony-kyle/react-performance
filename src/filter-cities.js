@@ -16,3 +16,5 @@ export function getItems(filter) {
     keys: ['name'],
   })
 }
+
+export default class makeFilterCitiesWorker {}
